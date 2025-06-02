@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Interativa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <div id="display" class="display">0</div>
+        <div class="buttons">
+            <button class="button" onclick="appendNumber(7)">7</button>
+            <button class="button" onclick="appendNumber(8)">8</button>
+            <button class="button" onclick="appendNumber(9)">9</button>
+            <button class="button" onclick="setOperation('+')">+</button>
+
+            <button class="button" onclick="appendNumber(4)">4</button>
+            <button class="button" onclick="appendNumber(5)">5</button>
+            <button class="button" onclick="appendNumber(6)">6</button>
+            <button class="button" onclick="setOperation('-')">-</button>
+
+            <button class="button" onclick="appendNumber(1)">1</button>
+            <button class="button" onclick="appendNumber(2)">2</button>
+            <button class="button" onclick="appendNumber(3)">3</button>
+            <button class="button" onclick="setOperation('*')">*</button>
+
+            <button class="button" onclick="appendNumber(0)">0</button>
+            <button class="button" onclick="clearDisplay()">C</button>
+            <button class="button" onclick="calculateResult()">=</button>
+            <button class="button" onclick="setOperation('/')">/</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+}
+
+.calculator {
+    width: 260px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    font-size: 32px;
+    text-align: right;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    padding: 20px;
+}
+
+.button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ddd;
+}
+
+.button:active {
+    background-color: #bbb;
+}
+// script.js
+
+let currentInput = '';
+let previousInput = '';
+let operation = null;
+
+function appendNumber(number) {
+    if (currentInput === '0') {
+        currentInput = String(number);
+    } else {
+        currentInput += String(number);
+    }
+    updateDisplay();
+}
+
+function setOperation(op) {
+    if (currentInput === '') return;
+    if (previousInput !== '') {
+        calculateResult();
+    }
+    operation = op;
+    previousInput = currentInput;
+    currentInput = '';
+}
+
+function calculateResult() {
+    let result;
+    const prev = parseFloat(previousInput);
+    const current = parseFloat(currentInput);
+
+    if (isNaN(prev) || isNaN(current)) return;
+
+    switch (operation) {
+        case '+':
+            result = prev + current;
+            break;
+        case '-':
+            result = prev - current;
+            break;
+        case '*':
+            result = prev * current;
+            break;
+        case '/':
+            result = prev / current;
+            break;
+        default:
+            return;
+    }
+
+    currentInput = String(result);
+    operation = null;
+    previousInput = '';
+    updateDisplay();
+}
+
+function clearDisplay() {
+    currentInput = '';
+    previousInput = '';
+    operation = null;
+    updateDisplay();
+}
+
+function updateDisplay() {
+    const display = document.getElementById('display');
+    display.textContent = currentInput || '0';
+}
+
