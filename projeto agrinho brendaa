@@ -1,0 +1,116 @@
+📁 projeto-agrinho-2025
+├── index.html
+├── style.css
+└── img/
+   https://img.freepik.com/fotos-premium/dois-fazendeiros-com-mascaras-medicas-discutem-questoes-agricolas-no-campo-de-trigo-verde-agro-business-covid19_217236-10035.jpg?semt=ais_hybrid&w=740
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aprendendo com o Campo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Aprendendo com o Campo</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#sustentabilidade">Sustentabilidade</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <section id="sobre">
+    <h2>O que é o Projeto?</h2>
+    <p>Este site tem como objetivo ensinar jovens sobre a importância do campo e da agricultura sustentável no Brasil.</p>
+  </section>
+
+  <section id="sustentabilidade">
+    <h2>Agricultura Sustentável</h2>
+    <p>A agricultura sustentável cuida do meio ambiente, das pessoas e garante alimento para todos.</p>
+    <img src="img/campo.jpg" alt="Imagem do campo com plantação" />
+  </section>
+
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required />
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" required></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Projeto criado por [Seu Nome] - Agrinho 2025</p>
+  </footer>
+</body>
+</html>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f0f9f2;
+  color: #333;
+}
+
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 1em;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+section {
+  padding: 2em;
+}
+
+section#sustentabilidade img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin-top: 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+input, textarea {
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 0.7em;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
+}
+
